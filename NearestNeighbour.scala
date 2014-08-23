@@ -29,7 +29,7 @@ object NearestNeighbour extends App {
   val adults = Set(new Person(83,179,"Cynthia"), new Person(71, 168,"Terrence"), new Person(56, 160,"Sid"))
 
   // Filter not is union but without any duplicates
-  val sample: Set[Person] = children filterNot adults
+  val sample: Set[Person] = (children union adults) filterNot (children intersect adults)
 
   println(s"Input is: $in")
   val nearestNeighbour = computeNearestNeighbour(in, sample)

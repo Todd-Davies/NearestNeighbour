@@ -19,7 +19,7 @@ class Point(val coordinates: Set[Int]) {
    */
   def computeDistance(neighbour: Point): Double \/ InvalidDimensionException = neighbour.dimensions match {
     case `dimensions` => -\/({
-      val delta: Set[Double] = for {(a,b) <- coordinates zip neighbour.coordinates} yield math.pow(a-b, dimensions)
+      val delta: Set[Double] = for {(a,b) <- coordinates zip neighbour.coordinates} yield math.pow(a-b, 2)
       math.sqrt(delta.sum)
     })
     case _ => \/-(new InvalidDimensionException(s"Points must have the same number of dimensions - $this, $neighbour"))
